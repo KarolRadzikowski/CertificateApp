@@ -53,9 +53,15 @@ namespace CertyficateApp
             {
                 using( var reader = File.OpenText($"{personFileName}"))
                 {
-
+                    var line = reader.ReadLine();
+                    while (line != null) 
+                    {
+                        var grade = float.Parse(line);
+                        result.AddGrade(grade);
+                        line = reader.ReadLine();
+                    }
                 }
-            }
+            }return result;
         }
     }
 }
